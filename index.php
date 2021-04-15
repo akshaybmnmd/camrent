@@ -1,17 +1,15 @@
 <?php
-$servername = "localhost";
-$username = "id9993574_akshaybmnmd";
-$password = "akshaybmn";
-$dbname = "id9993574_accumulate";
+
+require './config.php';
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli(servername, username, password, dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM `camrent` WHERE `unb` = '0'";
+$sql = "SELECT * FROM `$table` WHERE `unb` = '0'";
 
 $result = $conn->query($sql);
 $dates = '"2-2-2020"';

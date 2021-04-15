@@ -1,5 +1,7 @@
 <?php
 
+require '../config.php';
+
 /*
  * DataTables example server-side processing script.
  *
@@ -17,9 +19,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Easy set variables
  */
-
-// DB table to use
-$table = 'camrent';
 
 // Table's primary key
 $primaryKey = 'id';
@@ -48,12 +47,11 @@ $columns = array(
 
 // SQL server connection information
 $sql_details = array(
-    'user' => 'id9993574_akshaybmnmd',
-    'pass' => 'akshaybmn',
-    'db'   => 'id9993574_accumulate',
-    'host' => 'localhost'
+    'user' => username,
+    'pass' => password,
+    'db'   => dbname,
+    'host' => servername
 );
-
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP

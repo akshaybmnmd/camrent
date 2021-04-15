@@ -1,4 +1,7 @@
 <?php
+
+require '../config.php';
+
 session_start();
 if (!$_SESSION['login']) {
     if ($_POST) {

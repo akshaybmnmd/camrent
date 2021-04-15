@@ -1,15 +1,10 @@
 <?php
 
+require './config.php';
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit("Only handles POST requests");
 }
-
-$servername = "localhost";
-$username = "id9993574_akshaybmnmd";
-$password = "akshaybmn";
-$dbname = "id9993574_accumulate";
-
-// print_r($_SERVER);
 
 //commom parameters
 $action = $_REQUEST['action'];
@@ -37,7 +32,7 @@ $Proofs = $_REQUEST['Proofs'];
 $ip = $_SERVER['REMOTE_ADDR'];
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli(servername, username, password, dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -45,8 +40,8 @@ if ($conn->connect_error) {
 
 switch ($action) {
     case 'insert':
-        $sql = "INSERT INTO `camrent` (`name`, `phone`, `email`, `address`, `bookeddate`, `duration`, `startday`, `endday`, `kitlens`, `zoomlens`, `primelens`, `camera`, `rent`, `paid`, `addedcost`, `Damagecost`, `totalamound`, `remaining`, `Proofs`, `una`, `unb`, `unc`, `und`) 
-VALUES ('$name', '$phone', '$email', '$address', '$bookeddate', '$duration', '$startday', '$_ENV', '$kitlens', '$zoomlens', '$primelens', '$camera', '$rent', '$paid', $addedcost, '$Damagecost', '$totalamound', '$remaining', '$Proofs', '$ip', NULL, NULL, NULL)";
+        $sql = "INSERT INTO `$table` (`name`, `phone`, `email`, `address`, `bookeddate`, `duration`, `startday`, `endday`, `kitlens`, `zoomlens`, `primelens`, `camera`, `rent`, `paid`, `addedcost`, `Damagecost`, `totalamound`, `remaining`, `Proofs`, `una`, `unb`, `unc`, `und`) 
+VALUES ('$name', '$phone', '$email', '$address', '$bookeddate', '$duration', '$startday', '$endday', '$kitlens', '$zoomlens', '$primelens', '$camera', '$rent', '$paid', $addedcost, '$Damagecost', '$totalamound', '$remaining', '$Proofs', '$ip', NULL, NULL, NULL)";
         break;
     case 'getall':
         $sql = "SELECT * FROM `camrent`";
