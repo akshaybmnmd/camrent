@@ -44,7 +44,7 @@ if (!$_SESSION['login']) {
         <th>Paid</th>
         <th>Added Cost</th>
         <th>Damage Cost</th>
-        <th>Total Ammound</th>
+        <th>Total Amount</th>
         <th>Remaining</th>
         <th>Proofs</th>
         <th>IP</th>
