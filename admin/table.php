@@ -1,5 +1,5 @@
 <?php
-
+// phpinfo();
 require '../config.php';
 
 session_start();
@@ -85,7 +85,7 @@ if (!$_SESSION['login']) {
       $("#table_id").DataTable({
         processing: true,
         serverSide: true,
-        ajax: "./tableDataFull.php", // your php file
+        ajax: "./tableData.php?action=fulltable", // your php file
         "rowCallback": function(row, data) {
           datearray = data[6].split("-");
           var d = new Date(datearray[2], datearray[1] - 1, datearray[0]);

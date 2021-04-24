@@ -58,9 +58,9 @@ VALUES ('$name', '$phone', '$email', '$address', '$bookeddate', '$duration', '$s
 
 if ($conn->query($sql) === TRUE) {
     $id = $conn->insert_id;
-    exit("Your booking has been placed for $bookeddate upto $duration days with a rent of $totalamound. Your booking ID is $id.<br> Contact with Akshay to confirm your booking.<br><br> Contact:- +91 8943705571<br><br><a href='http://camrent.akshays.space/camrent/'>Book Another One</a><br><br><a href='http://camrent.akshays.space/camrent/verify.php?id=$id'>Verify your booking</a>");
+    exit("Your booking has been placed for $bookeddate upto $duration days with a rent of $totalamound. Your booking ID is $id.<br> Contact with Akshay to confirm your booking.<br><br> Contact:- +91 8606815571<br><br><a href='http://camrent.akshays.space/camrent/'>Book Another One</a><br><br><a href='http://camrent.akshays.space/camrent/verify.php?id=$id'>Verify your booking</a>");
 } else {
-    exit("Something went wrong, Contact Akshay -> +91 8943705571");
+    exit("Something went wrong, Contact Akshay -> +91 8606815571");
 }
 $conn->close();
 header('Location: http://camrent.akshays.space/camrent/');

@@ -280,7 +280,7 @@ if ($result->num_rows > 0) {
             $("#table_id").DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "./tableData.php",
+                ajax: "./tableData.php?action=admin",
                 "columnDefs": [{
                     "render": function(data, type, row) {
                         return '<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myAmountModal" onClick=editrent(' + row[0] + ')>Update rent</button><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myPaymentModal" onClick=editpayment(' + row[0] + ')>Update payment</button><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" onClick=edit(' + row[0] + ')>Edit</button>';
@@ -291,7 +291,7 @@ if ($result->num_rows > 0) {
                     console.log(data);
                     datearray = data[3].split("-");
                     var d = new Date(datearray[2], datearray[1] - 1, datearray[0]);
-                    d.setDate(d.getDate() + parseInt(data[7]));
+                    d.setDate(d.getDate() + parseInt(data[4]));
                     const date1 = new Date();
                     const diffTime = d - date1;
                     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -411,7 +411,6 @@ if ($result->num_rows > 0) {
         }
 
         function edit(id) {
-
             console.log("id", id);
             $.post("../ajaxHandler.php?action=getbyid&id=" + id, function(jsonData, status) {
                 data = jsonData;

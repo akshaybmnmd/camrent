@@ -1,5 +1,4 @@
 <?php
-
 require './config.php';
 
 // Create connection
@@ -30,7 +29,6 @@ if ($result->num_rows > 0) {
         }
         $dates = $dates . ',"' . $row['bookeddate'] . '"';
     }
-} else {
 }
 $conn->close();
 ?>
@@ -46,17 +44,17 @@ $conn->close();
 </head>
 
 <body>
+    <!-- booking model -->
     <div id="bookcammodel" class="modal fade" role="dialog">
         <div class="modal-dialog">
-
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 id='model3Heading' class="modal-title">Modal 3 Header</h4>
+                    <h4 id='model3Heading' class="modal-title">CamRent</h4>
                 </div>
-                <div class="modal-body">
-                    <form name="myForm" action="./action_page.php" method="POST" enctype='multipart/form-data'>
+                <form name="myForm" action="./action_page.php" method="POST" enctype='multipart/form-data'>
+                    <div class="modal-body">
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" class="form-control" name="name" required size="30">
@@ -98,21 +96,50 @@ $conn->close();
                         <div class="form-group">
                             <label for="myfile">Upload a ID proof:</label>
                             <input type="file" class="form-control" name="file[]" id="file" multiple>
-                            <!-- <input type="file" id="myfile" class="form-control" name="myfile"> -->
                         </div>
+                    </div>
+                    <div class="modal-footer">
+                        <span>Call Me at +91 8606815571</span>
                         <input type="submit" class="btn btn-default" value="Submit">
-                    </form>
-                    <div id='amound'>Call Me at +91 8606815571</div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="updaterent()">Submit</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
             </div>
-
         </div>
     </div>
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#bookcammodel" onClick=editrent(' + row[0] + ')>Update rent</button>
+
+    <!-- Login model -->
+    <div id="updatemodel" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 id='model3Heading' class="modal-title">Open Your Booking</h4>
+                </div>
+                <form name="myForm" action="./booking.php" method="POST" enctype='multipart/form-data'>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" class="form-control" name="number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Reference ID:</label>
+                            <input type="password" class="form-control" name="id" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <span>Call Me at +91 8606815571</span>
+                        <input type="submit" class="btn btn-default" value="Submit">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#bookcammodel" onClick=editrent()>Create New Booking</button><br>
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#updatemodel" onClick=editrent()>Open Your Booking</button>
     <script type="text/javascript">
         var unavailableDates = [<?php echo $dates; ?>];
 
@@ -129,7 +156,13 @@ $conn->close();
             }
         }
         $(function() {
-            $(' #date').datepicker({ beforeShowDay: available, autoSize: true, dateFormat: "dd-m-yy" }); }) </script>
+            $(' #date').datepicker({
+                beforeShowDay: available,
+                autoSize: true,
+                dateFormat: "dd-m-yy"
+            });
+        })
+    </script>
 </body>
 
 </html>
