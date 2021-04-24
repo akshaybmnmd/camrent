@@ -21,7 +21,8 @@ $columns = array(
     array('db' => 'addedcost', 'dt' => 11),
     array('db' => 'Damagecost',  'dt' => 12),
     array('db' => 'totalamound', 'dt' => 13),
-    array('db' => 'remaining', 'dt' => 14)
+    array('db' => 'remaining', 'dt' => 14),
+    array('db' => 'unb', 'dt' => "return")
 );
 
 // SQL server connection information
