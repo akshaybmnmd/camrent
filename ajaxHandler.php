@@ -127,3 +127,12 @@ function delete($con, $sql)
     }
     mysqli_close($con);
 }
+
+if ($_REQUEST['actionby'] == 'user') {
+    $string = "User $id performed action $action";
+    $url = "https://api.getping.info/xLhOLfpK/" . $string;
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    $result = curl_exec($ch);
+}
